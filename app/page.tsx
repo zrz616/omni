@@ -1,9 +1,53 @@
+import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { ArrowDown } from "lucide-react"
 import Image from "next/image";
 
+const imgURL = [
+  "https://omnibvi.com/files/thumbnails/static_web_img_index_banner01_desktop_1920x960.webp",
+  "https://omnibvi.com/files/thumbnails/static_web_img_index_banner02_desktop_1920x960.webp"
+]
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
+    <main className="flex min-h-screen flex-col items-center justify-between">
+      <section className="w-full relative">
+        <Carousel className="w-full" opts={{loop: true}}>
+          <CarouselContent>
+          {imgURL.map((href, index) => (
+            <CarouselItem key={index}>
+              <img className="rounded-bl-[110px]" src={href} alt="banner"></img>
+              {/* <div className="p-1">
+                <span className="text-4xl font-semibold">{index + 1}</span>
+              </div> */}
+            </CarouselItem>
+          ))}
+          </CarouselContent>
+          <CarouselPrevious/>
+          <CarouselNext />
+        </Carousel>
+        <div>
+          <Button className="absolute right-20 -bottom-12 rounded-full w-24 h-24 hover:bg-orange-400 bg-orange-500">
+            <ArrowDown />
+          </Button>
+        </div>
+      </section>
+      <section className="w-full pt-24">
+        <div className="px-10 md:text-center lg:text-left">
+          <p className="before:content-[''] before:block before:absolute before:left-0 before:top-1.5 before:bg-sky-900 before:w-1 before:h-[1em] relative inline-block pl-3.5 mt-0 mb-5 font-sans font-semibold text-sky-900 tracking-widest leading-8 text-xl md:text-center lg:text-left">ABOUT</p>
+        </div>
+        <div className="px-10 lg:grid lg:grid-cols-3 lg:gap-3">
+          <div>
+            <h2 className="text-4xl md:text-center ">
+              <span className="mb-2 font-bold block">雲端資安整合專家</span>
+              <span className="font-normal">核心價值和嶄新視野</span>
+            </h2>
+          </div>
+          <div className="col-span-2">
+            
+          </div>
+        </div>
+      </section>
+      {/* <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
           <code className="font-mono font-bold">app/page.tsx</code>
@@ -106,8 +150,8 @@ export default function Home() {
           <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
-        </a>
-      </div>
+        </a>  
+      </div> */}
     </main>
   );
 }
