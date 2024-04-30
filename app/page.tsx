@@ -1,28 +1,52 @@
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ArrowDown } from "lucide-react"
+import { ArrowDown } from "lucide-react";
 import Image from "next/image";
 
-const imgURL = [
+const bannerImgURL = [
   "https://omnibvi.com/files/thumbnails/static_web_img_index_banner01_desktop_1920x960.webp",
   "https://omnibvi.com/files/thumbnails/static_web_img_index_banner02_desktop_1920x960.webp"
-]
+];
+
+const aboutDate = [
+  {
+    href: "https://omnibvi.com/static/web/img/index/index_about_01.webp",
+    line1: "代理全球",
+    line2: "數一數二品牌"
+  },
+  {
+    href: "https://omnibvi.com/static/web/img/index/index_about_02.webp",
+    line1: "提供 24/7",
+    line2: "在線工程師服務"
+  },
+  {
+    href: "https://omnibvi.com/static/web/img/index/index_about_01.webp",
+    line1: "協助企業快速上雲",
+    line2: "資安防護"
+  },
+  {
+    href: "https://omnibvi.com/static/web/img/index/index_about_01.webp",
+    line1: "豐富跨產業經驗",
+    line2: ""
+  },
+];
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <section className="w-full relative">
-        <Carousel className="w-full" opts={{loop: true}}>
+        <Carousel className="w-full" opts={{ loop: true }}>
           <CarouselContent>
-          {imgURL.map((href, index) => (
-            <CarouselItem key={index}>
-              <img className="rounded-bl-[110px]" src={href} alt="banner"></img>
-              {/* <div className="p-1">
+            {bannerImgURL.map((href, index) => (
+              <CarouselItem key={index}>
+                <img className="rounded-bl-[110px]" src={href} alt="banner"></img>
+                {/* <div className="p-1">
                 <span className="text-4xl font-semibold">{index + 1}</span>
               </div> */}
-            </CarouselItem>
-          ))}
+              </CarouselItem>
+            ))}
           </CarouselContent>
-          <CarouselPrevious/>
+          <CarouselPrevious />
           <CarouselNext />
         </Carousel>
         <div>
@@ -35,16 +59,31 @@ export default function Home() {
         <div className="px-10 md:text-center lg:text-left">
           <p className="before:content-[''] before:block before:absolute before:left-0 before:top-1.5 before:bg-sky-900 before:w-1 before:h-[1em] relative inline-block pl-3.5 mt-0 mb-5 font-sans font-semibold text-sky-900 tracking-widest leading-8 text-xl md:text-center lg:text-left">ABOUT</p>
         </div>
-        <div className="px-10 lg:grid lg:grid-cols-3 lg:gap-3">
+        <div className="pr-10 lg:grid lg:grid-cols-3 lg:gap-6 lg:mb-24">
           <div>
-            <h2 className="text-4xl md:text-center ">
+            <h2 className="text-4xl md:text-center mb-20">
               <span className="mb-2 font-bold block">雲端資安整合專家</span>
               <span className="font-normal">核心價值和嶄新視野</span>
             </h2>
           </div>
           <div className="col-span-2">
-            
+            <div className="md:text-center md:ml-10 lg:grid lg:grid-cols-4 lg:gap-4">
+              <p className="lg:text-left md:mb-5 md:mr-10 col-span-3 text-lg">歐米英泰成立於2014年，憑藉對實體機房的豐富經驗與對CDN(content delivery network)的熟稔，加以專業團隊建構雲端網路、雲端資料中心、雲端資訊安全、雲端應用等服務；擁有豐富的跨產業經驗，專精網路資訊安全防護，為企業網路遞送優化、建置網路資安防護，致力實現企業快速上雲。</p>
+              <Button className="rounded-full bg-sky-600" size={"lg"}>View More</Button>
+            </div>
           </div>
+        </div>
+        <div className="pl-10 from-cyan-50 to-pink-500 grid lg:grid-cols-4 gap-4" style={{ backgroundImage: "radial-gradient(closest-side, #ffd1f2, #ec9adf, rgba(94, 189, 213, 0))" }}>
+          {aboutDate.map(({ href, line1, line2 }) => (
+            <div className="bg-cover bg-center rounded-full w-64 h-64 pt-8 align-middle" style={{ backgroundImage: "url(https://omnibvi.com/static/web/img/index/about_date_bg.webp)" }}>
+              <img className="rounded-full bg-white mx-auto mb-3 w-5/12" data-src="/static/web/img/index/index_about_01.webp" src={href} alt="歐米英泰" width="260" height="260"></img>
+              <p className="text-xl text-center">
+                {line1}
+                <br />
+                {line2}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
       {/* <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
